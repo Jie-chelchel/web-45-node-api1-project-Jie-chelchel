@@ -81,10 +81,10 @@ server.delete("/api/users/:id", async (req, res) => {
   }
 });
 
-server.put("/api/users/:id", (req, res) => {
+server.put("/api/users/:id", async (req, res) => {
   const { id } = req.params;
   const change = req.body;
-  const selectedUser = findById(id);
+  const selectedUser = await findById(id);
   if (!selectedUser) {
     res
       .status(404)
